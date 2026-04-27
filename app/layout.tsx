@@ -1,12 +1,1 @@
-import React from 'react';
-import './globals.css';
-
-const Layout: React.FC<{children: React.ReactNode}> = ({children}) => {
-  return (
-    <html lang='en'>
-      <body>{children}</body>
-    </html>
-  );
-};
-
-export default Layout;
+import React from 'react'; import { Inter } from 'next/font/google'; const inter = Inter({ subsets: ['latin'] }); const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => { return ( <html lang='en' className={inter.className}> <body>{children}</body> </html> ); }; export default Layout;
