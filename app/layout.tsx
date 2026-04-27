@@ -1,11 +1,8 @@
-export const metadata = {
-  title: 'SparkleWash Solutions',
-  description: 'Professional washing services for your needs.'
-};
+export const metadata = { title: 'CleanSlate Pressure Washing', description: 'Professional pressure washing services for a clean start!' };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html>
       <body>{children}</body>
     </html>
   );
