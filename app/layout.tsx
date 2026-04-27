@@ -1,6 +1,6 @@
 export const metadata = {
-  title: 'ClearView Pressure Washing',
-  description: 'Top-notch pressure washing services.'
+  title: 'Clear Shine Pressure Washing',
+  description: 'Professional pressure washing services',
 };
 
 export default function RootLayout({ children }) {
