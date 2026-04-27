@@ -6,13 +6,18 @@ export default function Home() {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
-  const [success, setSuccess] = useState(false);
-  const [error, setError] = useState('');
+  const [status, setStatus] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setSuccess(false);
-    setError('');
+    const payload = {
+      name,
+      email,
+      phone,
+      message,
+      source_site: 'swift-shine-pressure-washing-site',
+      business_name: 'Clear Shine Pressure Washing'
+    };
 
     try {
       const response = await fetch('http://localhost:5678/webhook-test/lead-capture', {
@@ -20,33 +25,26 @@ export default function Home() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          name,
-          email,
-          phone,
-          message,
-          source_site: 'swift-shine-pressure-washing-site',
-          business_name: 'ClearView Pressure Washing'
-        })
+        body: JSON.stringify(payload),
       });
 
       if (response.ok) {
-        setSuccess(true);
+        setStatus('Submission successful!');
         setName('');
         setEmail('');
         setPhone('');
         setMessage('');
       } else {
-        throw new Error('Failed to submit');
+        setStatus('Submission failed. Please try again.');
       }
-    } catch (err) {
-      setError('Error submitting form');
+    } catch (error) {
+      setStatus('Submission failed. Please try again.');
     }
   };
 
   return (
     <div>
-      <h1>ClearView Pressure Washing</h1>
+      <h1>Welcome to Clear Shine Pressure Washing</h1>
       <form onSubmit={handleSubmit}>
         <input type='text' placeholder='Name' value={name} onChange={(e) => setName(e.target.value)} required />
         <input type='email' placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} required />
@@ -54,8 +52,7 @@ export default function Home() {
         <textarea placeholder='Message' value={message} onChange={(e) => setMessage(e.target.value)} required></textarea>
         <button type='submit'>Submit</button>
       </form>
-      {success && <p>Form submitted successfully!</p>}
-      {error && <p>{error}</p>}
+      {status && <p>{status}</p>}
     </div>
   );
 }
