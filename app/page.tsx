@@ -1,1 +1,13 @@
-import React from 'react'; import Contact from './components/Contact'; const HomePage: React.FC = () => { return ( <div className='flex flex-col items-center justify-center min-h-screen bg-gray-100'> <h1 className='text-4xl font-bold mb-4'>EcoClean Pressure Washing</h1> <p className='text-lg mb-8'>Transforming your surfaces, one wash at a time!</p> <Contact /> </div> ); }; export default HomePage;
+export default function Home() {
+  return (
+    <div>
+      <h1>Welcome to SparkleWash Solutions</h1>
+      <p>Your one-stop solution for all your washing needs!</p>
+      <section>
+        <h2>Contact Us</h2>
+        <p>Email: info@sparklewashsolutions.com</p>
+        <p>Phone: (123) 456-7890</p>
+      </section>
+    </div>
+  );
+}
