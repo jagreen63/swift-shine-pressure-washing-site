@@ -1,11 +1,11 @@
 export const metadata = {
-  title: 'Clear Shine Pressure Washing',
-  description: 'Professional pressure washing services',
+  title: 'CleanSlate Pressure Washing',
+  description: 'Professional pressure washing services to keep your property clean and pristine.'
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang='en'>
+    <html lang="en">
       <body>{children}</body>
     </html>
   );
