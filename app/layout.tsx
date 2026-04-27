@@ -1,1 +1,12 @@
-import React from 'react'; import { Inter } from 'next/font/google'; const inter = Inter({ subsets: ['latin'] }); const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => { return ( <html lang='en' className={inter.className}> <body>{children}</body> </html> ); }; export default Layout;
+export const metadata = {
+  title: 'SparkleWash Solutions',
+  description: 'Professional washing services for your needs.'
+};
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  );
+}
