@@ -21,43 +21,44 @@ export default function Home() {
       phone,
       message,
       source_site: 'swift-shine-pressure-washing-site',
-      business_name: 'ClearView Pressure Washing',
+      business_name: 'Sparkle Clean Pressure Washing'
     };
 
     try {
       const response = await fetch('http://localhost:5678/webhook-test/lead-capture', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(data)
       });
-      if (response.ok) {
-        setSuccess('Your message has been sent successfully!');
-        setName('');
-        setEmail('');
-        setPhone('');
-        setMessage('');
-      } else {
-        setError('There was an error sending your message.');
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
       }
-    } catch (err) {
-      setError('There was an error sending your message.');
+
+      setSuccess('Your message has been sent successfully!');
+      setName('');
+      setEmail('');
+      setPhone('');
+      setMessage('');
+    } catch (error) {
+      setError('There was a problem submitting your message.');
     }
   };
 
   return (
     <div>
-      <h1>Welcome to ClearView Pressure Washing</h1>
+      <h1>Welcome to Sparkle Clean Pressure Washing</h1>
       <form onSubmit={handleSubmit}>
-        <input type='text' value={name} onChange={(e) => setName(e.target.value)} placeholder='Name' required />
-        <input type='email' value={email} onChange={(e) => setEmail(e.target.value)} placeholder='Email' required />
-        <input type='text' value={phone} onChange={(e) => setPhone(e.target.value)} placeholder='Phone' required />
-        <textarea value={message} onChange={(e) => setMessage(e.target.value)} placeholder='Message' required></textarea>
-        <button type='submit'>Send</button>
+        <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Name" required />
+        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required />
+        <input type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="Phone" required />
+        <textarea value={message} onChange={(e) => setMessage(e.target.value)} placeholder="Message" required></textarea>
+        <button type="submit">Submit</button>
       </form>
-      {success && <p>{success}</p>}
-      {error && <p>{error}</p>}
+      {success && <p style={{ color: 'green' }}>{success}</p>}
+      {error && <p style={{ color: 'red' }}>{error}</p>}
     </div>
   );
 }
