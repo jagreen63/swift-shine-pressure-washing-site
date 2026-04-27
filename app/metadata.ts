@@ -1,6 +1,1 @@
-export const metadata = {
-  title: 'Pro Clean Pressure Washing',
-  description: 'Professional pressure washing services for residential and commercial properties.',
-  keywords: 'pressure washing,cleaning,services,Pro Clean',
-  author: 'Pro Clean Team'
-};
+export const metadata = { title: 'EcoClean Pressure Washing', description: 'Professional pressure washing services for a cleaner, brighter home.', keywords: 'pressure washing, eco-friendly cleaning, home services', };
