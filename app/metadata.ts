@@ -1,1 +1,0 @@
-export const metadata = { title: 'EcoClean Pressure Washing', description: 'Professional pressure washing services for a cleaner, brighter home.', keywords: 'pressure washing, eco-friendly cleaning, home services', };
