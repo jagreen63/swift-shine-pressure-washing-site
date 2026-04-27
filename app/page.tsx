@@ -6,55 +6,58 @@ export default function Home() {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
-  const [success, setSuccess] = useState(false);
-  const [error, setError] = useState(false);
+  const [responseMessage, setResponseMessage] = useState('');
+  const [error, setError] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setSuccess(false);
-    setError(false);
-
-    const payload = {
+    const data = {
       name,
       email,
       phone,
       message,
       source_site: 'swift-shine-pressure-washing-site',
-      business_name: 'Clear View Pressure Washing'
+      business_name: 'CleanWave Pressure Washing'
     };
 
     try {
-      const response = await fetch('http://localhost:5678/webhook-test/lead-capture', {
+      const res = await fetch('http://localhost:5678/webhook-test/lead-capture', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(payload),
+        body: JSON.stringify(data)
       });
 
-      if (!response.ok) throw new Error('Network response was not ok');
-      setSuccess(true);
-      setName('');
-      setEmail('');
-      setPhone('');
-      setMessage('');
+      if (res.ok) {
+        setResponseMessage('Thank you for your message! We will get back to you soon.');
+        setName('');
+        setEmail('');
+        setPhone('');
+        setMessage('');
+        setError('');
+      } else {
+        setError('Failed to submit the form. Please try again later.');
+        setResponseMessage('');
+      }
     } catch (err) {
-      setError(true);
+      setError('An error occurred. Please check your connection and try again.');
+      setResponseMessage('');
     }
   };
 
   return (
     <div>
-      <h1>Clear View Pressure Washing</h1>
+      <h1>Welcome to CleanWave Pressure Washing</h1>
       <form onSubmit={handleSubmit}>
-        <input value={name} onChange={(e) => setName(e.target.value)} placeholder='Name' required />
-        <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder='Email' required type='email' />
-        <input value={phone} onChange={(e) => setPhone(e.target.value)} placeholder='Phone' required />
-        <textarea value={message} onChange={(e) => setMessage(e.target.value)} placeholder='Message' required />
+        <input type='text' placeholder='Name' value={name} onChange={(e) => setName(e.target.value)} required />
+        <input type='email' placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} required />
+        <input type='text' placeholder='Phone' value={phone} onChange={(e) => setPhone(e.target.value)} required />
+        <textarea placeholder='Message' value={message} onChange={(e) => setMessage(e.target.value)} required></textarea>
         <button type='submit'>Submit</button>
       </form>
-      {success && <p>Submission successful!</p>}
-      {error && <p>Submission failed. Please try again.</p>}
+      {responseMessage && <p>{responseMessage}</p>}
+      {error && <p>{error}</p>}
     </div>
   );
 }
