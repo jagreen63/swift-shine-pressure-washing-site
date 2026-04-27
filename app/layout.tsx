@@ -1,12 +1,8 @@
 export const metadata = {
-  title: 'Spotless Pressure Washing',
-  description: 'Expert pressure washing services.'
+  title: 'Clear View Pressure Washing',
+  description: 'Professional pressure washing services for a clear view.'
 };
 
-export default function RootLayout({ children }) {
-  return (
-    <html lang="en">
-      <body>{children}</body>
-    </html>
-  );
+export default function Layout({ children }) {
+  return <div>{children}</div>;
 }
