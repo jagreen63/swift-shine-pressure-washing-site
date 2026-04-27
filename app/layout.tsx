@@ -1,1 +1,12 @@
-export const metadata = { title: 'ClearView Pressure Washing', description: 'Professional pressure washing services' }; export default function Layout({ children }) { return <html lang='en'><body>{children}</body></html>; }
+export const metadata = {
+  title: 'ClearView Pressure Washing',
+  description: 'Top-notch pressure washing services.'
+};
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang='en'>
+      <body>{children}</body>
+    </html>
+  );
+}
