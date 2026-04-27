@@ -1,4 +1,6 @@
 export const metadata = {
-  title: 'Clear View Pressure Washing',
-  description: 'Professional pressure washing services to enhance the curb appeal of your property.',
+  title: 'Pro Clean Pressure Washing',
+  description: 'Professional pressure washing services for residential and commercial properties.',
+  keywords: 'pressure washing,cleaning,services,Pro Clean',
+  author: 'Pro Clean Team'
 };
